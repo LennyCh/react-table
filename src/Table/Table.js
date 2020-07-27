@@ -4,11 +4,11 @@ export default props => (
   <table className="table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>E-mail</th>
-        <th>Phone</th>
+        <th onClick={props.onSort.bind(null, 'id')}>ID</th>
+        <th onClick={props.onSort.bind(null, 'firstName')}>First Name</th>
+        <th onClick={props.onSort.bind(null, 'lastName')}>Last Name</th>
+        <th onClick={props.onSort.bind(null, 'email')}>E-mail</th>
+        <th onClick={props.onSort.bind(null, 'phone')}>Phone</th>
       </tr>
     </thead>
     <tbody>

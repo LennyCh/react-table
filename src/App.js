@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Loader from './Loader/Loader';
 import Table from './Table/Table';
+import _ from 'lodash';
 
 class App extends Component {
   state = {
     isLoading: true,
     data: [],
+    sort: 'asc',
+    sortField: 'id',
   }
   async componentDidMount() {
     const response = await fetch(`http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}`);
@@ -13,6 +16,16 @@ class App extends Component {
     this.setState({
       isLoading: false,
       data
+    })
+  }
+  onSort = sortField => {
+    const cloneData = this.state.data.concat();
+    const sortType = this.state.sort === 'asc' ? 'desc' : 'asc';
+    const orderedData = _.orderBy(cloneData, sortField, sortType);
+    this.setState({
+      data: orderedData,
+      sort: sortType,
+      sortField
     })
   }
   render() {
@@ -23,6 +36,7 @@ class App extends Component {
         ? <Loader />
         : <Table
         data={this.state.data}
+        onSort={this.onSort}
         />
       }
       </div>
