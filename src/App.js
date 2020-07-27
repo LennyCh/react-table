@@ -15,7 +15,7 @@ class App extends Component {
     const data = await response.json();
     this.setState({
       isLoading: false,
-      data
+      data: _.orderBy(data, this.state.sortField, this.state.sort)
     })
   }
   onSort = sortField => {
@@ -35,8 +35,10 @@ class App extends Component {
         this.state.isLoading
         ? <Loader />
         : <Table
-        data={this.state.data}
-        onSort={this.onSort}
+        data = {this.state.data}
+        onSort = {this.onSort}
+        sort = {this.state.sort}
+        sortField = {this.state.sortField}
         />
       }
       </div>
