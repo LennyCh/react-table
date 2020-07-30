@@ -2,16 +2,16 @@ import React from 'react';
 
 export default ({person}) => (
   <div>
-  <p>Выбран пользователь <b>{person.firstName + ' ' + person.lastName}</b></p>
+  <p>User: <b>{person.firstName + ' ' + person.lastName}</b></p>
   <p>
-  Описание: <br />
+  Description: <br />
   <textarea defaultValue={person.description} />
   </p>
 
-  <p>Адрес проживания: <b>{person.address.streetAddress}</b></p>
-  <p>Город: <b>{person.address.city}</b></p>
-  <p>Провинция/штат: <b>{person.address.state}</b></p>
-  <p>Индекс: <b>{person.address.zip}</b></p>
+  <p>Address: <b>{person.address.streetAddress}</b></p>
+  <p>City: <b>{person.address.city}</b></p>
+  <p>State: <b>{person.address.state}</b></p>
+  <p>Index: <b>{person.address.zip}</b></p>
 
   </div>
 )
